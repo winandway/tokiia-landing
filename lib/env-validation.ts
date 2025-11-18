@@ -11,6 +11,11 @@ const requiredEnvVars = [
 type RequiredEnvVar = typeof requiredEnvVars[number]
 
 export function validateEnv() {
+  // Solo validar en servidor (Node.js), no en cliente (navegador)
+  if (typeof window !== 'undefined') {
+    return // Skip validation in browser
+  }
+
   const missing: string[] = []
 
   for (const envVar of requiredEnvVars) {
@@ -20,15 +25,17 @@ export function validateEnv() {
   }
 
   if (missing.length > 0) {
-    throw new Error(
-      `Faltan las siguientes variables de entorno:\n${missing.join('\n')}\n\nPor favor, crea un archivo .env.local basado en .env.example`
+    console.error(
+      `⚠️  Faltan las siguientes variables de entorno:\n${missing.join('\n')}\n\nPor favor, crea un archivo .env.local basado en .env.example`
     )
+    // No lanzar error, solo advertir
+    return
   }
 
   // Validar formato de URL de Supabase
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  if (supabaseUrl && !supabaseUrl.startsWith('https://')) {
-    throw new Error('NEXT_PUBLIC_SUPABASE_URL debe comenzar con https://')
+  if (supabaseUrl && !supabaseUrl.startsWith('https://') && !supabaseUrl.startsWith('http://localhost')) {
+    console.warn('⚠️  NEXT_PUBLIC_SUPABASE_URL debe comenzar con https://')
   }
 
   // Advertir si se están usando valores por defecto
@@ -36,10 +43,12 @@ export function validateEnv() {
     console.warn('⚠️  Advertencia: Estás usando valores por defecto en .env.local')
   }
 
-  console.log('✅ Variables de entorno validadas correctamente')
+  if (process.env.NODE_ENV === 'development') {
+    console.log('✅ Variables de entorno validadas correctamente')
+  }
 }
 
-// Ejecutar validación solo en development
-if (process.env.NODE_ENV === 'development') {
+// Ejecutar validación solo en servidor
+if (typeof window === 'undefined' && process.env.NODE_ENV === 'development') {
   validateEnv()
 }
