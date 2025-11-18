@@ -77,7 +77,7 @@ export default async function Home() {
       <Security />
       <Features features={featuresData || undefined} />
       <GetStarted />
-      <Footer data={footerData} />
+      <Footer data={footerData || undefined} />
     </main>
   )
 }
