@@ -1,0 +1,150 @@
+{
+  "hero": {
+    "title": "Tokiia Wallet",
+    "subtitle": "Tu billetera Web3 descentralizada con P2P integrado",
+    "cta": "Abrir Wallet",
+    "cta_secondary": "Conocer más",
+    "stats": {
+      "decentralized": "Descentralizado",
+      "fees": "Comisiones ocultas",
+      "support": "Soporte"
+    }
+  },
+  "whyTokiia": {
+    "title": "¿Por qué elegir",
+    "titleHighlight": "Tokiia",
+    "subtitle": "Más fácil, más rápido y más seguro que las plataformas tradicionales",
+    "tokiia": {
+      "title": "Tokiia Wallet",
+      "features": {
+        "registration": "Registro en menos de 2 minutos",
+        "interface": "Interfaz intuitiva y fácil de usar",
+        "p2p": "P2P integrado sin comisiones ocultas",
+        "swap": "Swap directo entre tokens",
+        "noLimits": "Sin límites de retiro",
+        "support": "Soporte 24/7 en español",
+        "noKyc": "Sin KYC complejo",
+        "control": "Control total de tus fondos"
+      }
+    },
+    "others": {
+      "title": "Binance & Otros",
+      "features": {
+        "registration": "Proceso de registro complejo",
+        "interface": "Interfaz complicada para principiantes",
+        "fees": "Comisiones en cada transacción",
+        "swap": "Proceso de swap con múltiples pasos",
+        "limits": "Límites de retiro estrictos",
+        "support": "Soporte limitado",
+        "kyc": "KYC extensivo requerido",
+        "custody": "Custodia de tus fondos"
+      }
+    },
+    "stats": {
+      "time": "Tiempo de registro",
+      "p2pFees": "Comisiones P2P",
+      "support": "Soporte activo",
+      "control": "Tu control"
+    }
+  },
+  "featuresShowcase": {
+    "title": "Todo lo que necesitas en",
+    "titleHighlight": "un solo lugar",
+    "subtitle": "Una billetera completa con todas las funciones que necesitas para gestionar tus criptomonedas",
+    "features": {
+      "p2p": {
+        "title": "P2P Integrado",
+        "description": "Compra y vende criptomonedas directamente con otros usuarios. Sin intermediarios, sin comisiones ocultas.",
+        "items": {
+          "noFees": "Sin comisiones ocultas",
+          "secure": "Transacciones directas y seguras",
+          "methods": "Múltiples métodos de pago"
+        }
+      },
+      "swap": {
+        "title": "Swap Instantáneo",
+        "description": "Intercambia tokens al instante con las mejores tarifas del mercado. Rápido, seguro y transparente.",
+        "items": {
+          "rates": "Las mejores tarifas del mercado",
+          "instant": "Ejecución instantánea",
+          "tokens": "Soporte para múltiples tokens"
+        }
+      },
+      "history": {
+        "title": "Historial Completo",
+        "description": "Mantén un registro detallado de todas tus transacciones. Consulta tu historial en cualquier momento.",
+        "items": {
+          "complete": "Registro completo de transacciones",
+          "filters": "Filtros y búsqueda avanzada",
+          "export": "Exporta tus datos"
+        }
+      },
+      "analytics": {
+        "title": "Datos Analíticos",
+        "description": "Visualiza el rendimiento de tu portafolio con gráficos y estadísticas en tiempo real.",
+        "items": {
+          "realtime": "Gráficos en tiempo real",
+          "stats": "Estadísticas detalladas",
+          "tracking": "Seguimiento de rendimiento"
+        }
+      }
+    }
+  },
+  "security": {
+    "title": "Tu seguridad es nuestra",
+    "titleHighlight": "prioridad",
+    "subtitle": "Protección de nivel bancario para tus criptomonedas",
+    "features": {
+      "enterprise": {
+        "title": "Seguridad de Nivel Empresarial",
+        "description": "Tecnología de encriptación de última generación protege tus fondos"
+      },
+      "control": {
+        "title": "Control Total",
+        "description": "Tus claves privadas, tu dinero. Nadie más tiene acceso a tus fondos"
+      },
+      "transparency": {
+        "title": "Transparencia Total",
+        "description": "Sin comisiones ocultas. Sabes exactamente cuánto pagas en cada transacción"
+      },
+      "biometric": {
+        "title": "Autenticación Biométrica",
+        "description": "Desbloqueo con huella dactilar o reconocimiento facial"
+      }
+    },
+    "badges": {
+      "encryption": "Encriptación",
+      "auth": "Autenticación",
+      "control": "Tu control",
+      "opensource": "Transparente"
+    }
+  },
+  "getStarted": {
+    "title": "Comienza en",
+    "titleHighlight": "3 simples pasos",
+    "subtitle": "Más rápido y fácil que crear una cuenta en Binance",
+    "steps": {
+      "create": {
+        "title": "Crea tu cuenta",
+        "description": "Regístrate en menos de 2 minutos. Solo necesitas un email y contraseña.",
+        "time": "2 min"
+      },
+      "deposit": {
+        "title": "Deposita fondos",
+        "description": "Transfiere criptomonedas desde otra wallet o compra directamente con P2P.",
+        "time": "5 min"
+      },
+      "start": {
+        "title": "Empieza a operar",
+        "description": "Envía, recibe, intercambia y opera P2P. Todo desde una sola app.",
+        "time": "Inmediato"
+      }
+    },
+    "cta": {
+      "title": "¿Listo para empezar?",
+      "description": "Únete a miles de usuarios que ya confían en Tokiia para gestionar sus criptomonedas de forma segura y sencilla.",
+      "button": "Crear cuenta gratis",
+      "note": "Sin tarjeta de crédito requerida • Comienza en 2 minutos"
+    }
+  }
+}

@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tokiia Brand Colors */
+    --primary: 262 83% 67%; /* #8B5CF6 */
+    --primary-dark: 262 83% 58%; /* #7C3AED */
+    --accent-green: 160 84% 39%; /* #10B981 */
+    --accent-blue: 217 91% 60%; /* #3B82F6 */
+    --bg-dark: 240 12% 7%; /* #0F0F14 */
+    --bg-card: 240 17% 12%; /* #1A1A23 */
+    --bg-secondary: 240 8% 17%; /* #252530 */
+    --text-primary: 0 0% 100%; /* #FFFFFF */
+    --text-secondary: 220 13% 69%; /* #9CA3AF */
+    --border: 240 9% 20%; /* #2D2D3A */
+
+    /* shadcn/ui variables */
+    --background: 240 12% 7%;
+    --foreground: 0 0% 100%;
+    --card: 240 17% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 17% 12%;
+    --popover-foreground: 0 0% 100%;
+    --secondary: 240 8% 17%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 8% 17%;
+    --muted-foreground: 220 13% 69%;
+    --accent: 262 83% 67%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --input: 240 9% 20%;
+    --ring: 262 83% 67%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-bg-dark text-text-primary;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A23;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B5CF6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
+}
+
+/* Grid background pattern */
+.bg-grid-white {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* React Quill Editor Dark Theme */
+.rich-text-editor .ql-toolbar {
+  background: #252530;
+  border: 1px solid #2D2D3A !important;
+  border-radius: 8px 8px 0 0;
+}
+
+.rich-text-editor .ql-container {
+  background: #1A1A23;
+  border: 1px solid #2D2D3A !important;
+  border-top: none !important;
+  border-radius: 0 0 8px 8px;
+  font-size: 16px;
+  color: white;
+}
+
+.rich-text-editor .ql-editor {
+  min-height: 400px;
+  color: white;
+}
+
+.rich-text-editor .ql-editor.ql-blank::before {
+  color: #9CA3AF;
+  font-style: normal;
+}
+
+/* Quill toolbar buttons */
+.rich-text-editor .ql-toolbar button,
+.rich-text-editor .ql-toolbar .ql-picker-label {
+  color: white !important;
+}
+
+.rich-text-editor .ql-toolbar button:hover,
+.rich-text-editor .ql-toolbar .ql-picker-label:hover {
+  color: #8B5CF6 !important;
+}
+
+.rich-text-editor .ql-toolbar button.ql-active,
+.rich-text-editor .ql-toolbar .ql-picker-label.ql-active {
+  color: #8B5CF6 !important;
+}
+
+.rich-text-editor .ql-stroke {
+  stroke: white !important;
+}
+
+.rich-text-editor .ql-stroke:hover {
+  stroke: #8B5CF6 !important;
+}
+
+.rich-text-editor .ql-fill {
+  fill: white !important;
+}
+
+.rich-text-editor .ql-fill:hover {
+  fill: #8B5CF6 !important;
+}
+
+.rich-text-editor .ql-picker-options {
+  background: #252530;
+  border: 1px solid #2D2D3A;
+}
+
+.rich-text-editor .ql-picker-item {
+  color: white;
+}
+
+.rich-text-editor .ql-picker-item:hover {
+  color: #8B5CF6;
+}
+
+/* Headings in editor */
+.rich-text-editor .ql-editor h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #8B5CF6;
+  margin-bottom: 0.5em;
+}
+
+.rich-text-editor .ql-editor h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #10B981;
+  margin-bottom: 0.5em;
+}
+
+.rich-text-editor .ql-editor h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #3B82F6;
+  margin-bottom: 0.5em;
+}
+
+.rich-text-editor .ql-editor p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+.rich-text-editor .ql-editor ul,
+.rich-text-editor .ql-editor ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+.rich-text-editor .ql-editor blockquote {
+  border-left: 4px solid #8B5CF6;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #9CA3AF;
+}
+
+.rich-text-editor .ql-editor a {
+  color: #8B5CF6;
+  text-decoration: underline;
+}
+
+.rich-text-editor .ql-editor code {
+  background: #252530;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.rich-text-editor .ql-editor pre {
+  background: #252530;
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
