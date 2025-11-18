@@ -74,7 +74,7 @@ export default function PrivacyEditor() {
       const { data, error } = await supabase
         .from('cms_legal')
         .select('*')
-        .eq('document_type', 'privacy')
+        .eq('doc_type', 'privacy')
         .limit(1)
         .single()
 
@@ -101,7 +101,7 @@ export default function PrivacyEditor() {
         .from('cms_legal')
         .upsert({
           id: documentId || undefined,
-          document_type: 'privacy',
+          doc_type: 'privacy',
           title,
           content,
           updated_at: new Date().toISOString()

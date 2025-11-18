@@ -54,7 +54,7 @@ export default function TermsEditor() {
       const { data, error } = await supabase
         .from('cms_legal')
         .select('*')
-        .eq('document_type', 'terms')
+        .eq('doc_type', 'terms')
         .limit(1)
         .single()
 
@@ -81,7 +81,7 @@ export default function TermsEditor() {
         .from('cms_legal')
         .upsert({
           id: documentId || undefined,
-          document_type: 'terms',
+          doc_type: 'terms',
           title,
           content,
           updated_at: new Date().toISOString()
