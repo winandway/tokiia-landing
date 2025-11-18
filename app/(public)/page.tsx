@@ -75,7 +75,7 @@ export default async function Home() {
       <WhyTokiia />
       <FeaturesShowcase />
       <Security />
-      <Features features={featuresData} />
+      <Features features={featuresData || undefined} />
       <GetStarted />
       <Footer data={footerData} />
     </main>
