@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['dkpqdkqpmjoexdfbhmeh.supabase.co'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'dkpqdkqpmjoexdfbhmeh.supabase.co',
+        pathname: '/storage/v1/object/**',
+      },
+    ],
   },
 
   // Security Headers
