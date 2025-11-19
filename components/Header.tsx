@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Menu, X, LogIn, UserPlus, Globe } from 'lucide-react'
+import { Menu, X, LogIn, UserPlus, Globe, Sparkles } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
@@ -105,7 +105,7 @@ export default function Header() {
               {/* Selector de idioma */}
               <button
                 onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-                className="flex items-center gap-2 px-3 py-2 text-sm text-text-secondary hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                className="flex items-center gap-2 px-3 py-2 text-sm text-text-secondary hover:text-white transition-all rounded-lg hover:bg-white/5 border border-transparent hover:border-white/10"
               >
                 <Globe className="h-4 w-4" />
                 <span className="font-medium">{language === 'es' ? 'ES' : 'EN'}</span>
@@ -115,9 +115,9 @@ export default function Header() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary transition-all"
+                  className="border-accent-green/60 text-accent-green hover:bg-accent-green hover:text-white hover:border-accent-green transition-all shadow-sm hover:shadow-lg hover:shadow-accent-green/30 group"
                 >
-                  <UserPlus className="mr-2 h-4 w-4" />
+                  <Sparkles className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
                   Crear cuenta
                 </Button>
               </Link>
@@ -125,7 +125,7 @@ export default function Header() {
               <Link href="https://app.tokiia.com/auth/login">
                 <Button
                   size="sm"
-                  className="bg-primary hover:bg-primary-dark text-white shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all"
+                  className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white shadow-lg shadow-primary/40 hover:shadow-primary/60 transition-all"
                 >
                   <LogIn className="mr-2 h-4 w-4" />
                   Acceder
@@ -173,17 +173,20 @@ export default function Header() {
               <div className="p-6 space-y-6">
                 {/* Language Selector */}
                 <div className="space-y-2">
-                  <p className="text-xs uppercase tracking-wide text-text-secondary font-semibold">Idioma</p>
+                  <p className="text-xs uppercase tracking-wide text-text-secondary font-semibold flex items-center gap-2">
+                    <Globe className="h-3 w-3" />
+                    Idioma
+                  </p>
                   <div className="flex gap-2">
                     <button
                       onClick={() => {
                         setLanguage('es')
                         setMobileMenuOpen(false)
                       }}
-                      className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+                      className={`flex-1 py-2.5 px-4 rounded-lg font-medium transition-all ${
                         language === 'es'
-                          ? 'bg-primary text-white'
-                          : 'bg-bg-secondary text-text-secondary hover:text-white'
+                          ? 'bg-gradient-to-r from-primary to-accent-blue text-white shadow-lg shadow-primary/30'
+                          : 'bg-bg-secondary text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
                       🇪🇸 Español
@@ -193,10 +196,10 @@ export default function Header() {
                         setLanguage('en')
                         setMobileMenuOpen(false)
                       }}
-                      className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+                      className={`flex-1 py-2.5 px-4 rounded-lg font-medium transition-all ${
                         language === 'en'
-                          ? 'bg-primary text-white'
-                          : 'bg-bg-secondary text-text-secondary hover:text-white'
+                          ? 'bg-gradient-to-r from-primary to-accent-blue text-white shadow-lg shadow-primary/30'
+                          : 'bg-bg-secondary text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
                       🇺🇸 English
@@ -205,11 +208,14 @@ export default function Header() {
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-tokiia-border" />
+                <div className="border-t border-tokiia-border/50" />
 
                 {/* Actions */}
                 <div className="space-y-3">
-                  <p className="text-xs uppercase tracking-wide text-text-secondary font-semibold">Acciones</p>
+                  <p className="text-xs uppercase tracking-wide text-text-secondary font-semibold flex items-center gap-2">
+                    <Sparkles className="h-3 w-3" />
+                    Acciones
+                  </p>
 
                   <Link
                     href="https://app.tokiia.com/auth/register"
@@ -217,10 +223,15 @@ export default function Header() {
                   >
                     <Button
                       variant="outline"
-                      className="w-full justify-start border-primary/50 text-primary hover:bg-primary/10"
+                      className="w-full justify-start border-accent-green/60 text-accent-green hover:bg-accent-green hover:text-white hover:border-accent-green shadow-sm hover:shadow-lg hover:shadow-accent-green/30 transition-all group"
                     >
-                      <UserPlus className="mr-3 h-5 w-5" />
-                      Crear cuenta
+                      <div className="w-10 h-10 rounded-full bg-accent-green/10 group-hover:bg-white/20 flex items-center justify-center mr-3 transition-all">
+                        <Sparkles className="h-5 w-5" />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-semibold">Crear cuenta</div>
+                        <div className="text-xs opacity-70">Comienza gratis</div>
+                      </div>
                     </Button>
                   </Link>
 
@@ -228,9 +239,14 @@ export default function Header() {
                     href="https://app.tokiia.com/auth/login"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Button className="w-full justify-start bg-primary hover:bg-primary-dark text-white">
-                      <LogIn className="mr-3 h-5 w-5" />
-                      Acceder a mi cuenta
+                    <Button className="w-full justify-start bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white shadow-lg shadow-primary/40 hover:shadow-primary/60 transition-all group">
+                      <div className="w-10 h-10 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center mr-3 transition-all">
+                        <LogIn className="h-5 w-5" />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-semibold">Acceder</div>
+                        <div className="text-xs opacity-80">A mi cuenta</div>
+                      </div>
                     </Button>
                   </Link>
                 </div>
