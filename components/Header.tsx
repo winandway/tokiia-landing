@@ -96,7 +96,7 @@ export default function Header() {
             </button>
 
             {/* Logo - Centrado en móvil, izquierda en desktop */}
-            <div className="absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0">
+            <div className="absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 z-10">
               <LogoComponent />
             </div>
 

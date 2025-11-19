@@ -26,17 +26,53 @@ export default function CryptoTicker() {
 
   const fetchCryptoData = async () => {
     try {
+      console.log('🔄 Fetching crypto data from CoinGecko...')
       const response = await fetch(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h'
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+        }
       )
+
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`)
+      }
+
       const data = await response.json()
-      setCryptoData(data)
+      console.log('✅ Crypto data loaded:', data.length, 'coins')
+
+      if (data && Array.isArray(data) && data.length > 0) {
+        setCryptoData(data)
+      } else {
+        console.warn('⚠️ No data received from API, using fallback')
+        // Usar datos de respaldo si la API no responde
+        setCryptoData(getFallbackData())
+      }
       setLoading(false)
     } catch (error) {
-      console.error('Error fetching crypto data:', error)
+      console.error('❌ Error fetching crypto data:', error)
+      // Usar datos de respaldo en caso de error
+      setCryptoData(getFallbackData())
       setLoading(false)
     }
   }
+
+  // Datos de respaldo en caso de que la API falle
+  const getFallbackData = (): CryptoData[] => [
+    { id: 'bitcoin', symbol: 'BTC', name: 'Bitcoin', current_price: 43250.00, price_change_percentage_24h: 4.53, image: 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png' },
+    { id: 'ethereum', symbol: 'ETH', name: 'Ethereum', current_price: 3106.26, price_change_percentage_24h: 4.60, image: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png' },
+    { id: 'binancecoin', symbol: 'BNB', name: 'BNB', current_price: 936.61, price_change_percentage_24h: 4.51, image: 'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png' },
+    { id: 'solana', symbol: 'SOL', name: 'Solana', current_price: 141.23, price_change_percentage_24h: 2.34, image: 'https://assets.coingecko.com/coins/images/4128/small/solana.png' },
+    { id: 'ripple', symbol: 'XRP', name: 'XRP', current_price: 0.62, price_change_percentage_24h: -1.23, image: 'https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png' },
+    { id: 'cardano', symbol: 'ADA', name: 'Cardano', current_price: 0.58, price_change_percentage_24h: 3.45, image: 'https://assets.coingecko.com/coins/images/975/small/cardano.png' },
+    { id: 'dogecoin', symbol: 'DOGE', name: 'Dogecoin', current_price: 0.15, price_change_percentage_24h: 5.67, image: 'https://assets.coingecko.com/coins/images/5/small/dogecoin.png' },
+    { id: 'tron', symbol: 'TRX', name: 'TRON', current_price: 0.11, price_change_percentage_24h: -0.89, image: 'https://assets.coingecko.com/coins/images/1094/small/tron-logo.png' },
+    { id: 'polygon', symbol: 'MATIC', name: 'Polygon', current_price: 0.87, price_change_percentage_24h: 2.12, image: 'https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png' },
+    { id: 'avalanche', symbol: 'AVAX', name: 'Avalanche', current_price: 38.45, price_change_percentage_24h: 6.78, image: 'https://assets.coingecko.com/coins/images/12559/small/coin-round-red.png' },
+  ]
 
   if (loading) {
     return (
