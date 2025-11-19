@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import CryptoTicker from '@/components/CryptoTicker'
 
 export default function PublicLayout({
   children,
@@ -8,7 +9,8 @@ export default function PublicLayout({
   return (
     <>
       <Header />
-      <div className="pt-16 sm:pt-20">
+      <CryptoTicker />
+      <div className="pt-28 sm:pt-32">
         {children}
       </div>
     </>
