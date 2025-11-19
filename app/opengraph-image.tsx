@@ -110,11 +110,12 @@ export default async function Image() {
               lineHeight: 1.4,
               marginBottom: '40px',
               maxWidth: '800px',
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
-            Tu billetera Web3 descentralizada
-            <br />
-            con P2P integrado
+            <span>Tu billetera Web3 descentralizada</span>
+            <span>con P2P integrado</span>
           </div>
 
           {/* Features con iconos */}
