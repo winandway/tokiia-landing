@@ -69,6 +69,7 @@ export default function LogoManager() {
         .from('tokiia')
         .getPublicUrl(filePath)
 
+      console.log('✅ Archivo subido a Supabase Storage:', data.publicUrl)
       return data.publicUrl
     } catch (error) {
       console.error('Upload error:', error)
@@ -88,18 +89,33 @@ export default function LogoManager() {
       // Upload files if selected
       if (logoFile) {
         const url = await uploadFile(logoFile, 'logo')
-        if (url) newLogoUrl = url
+        if (url) {
+          console.log('📝 Guardando logo URL:', url)
+          newLogoUrl = url
+        }
       }
 
       if (logoDarkFile) {
         const url = await uploadFile(logoDarkFile, 'logo-dark')
-        if (url) newLogoDarkUrl = url
+        if (url) {
+          console.log('📝 Guardando logo dark URL:', url)
+          newLogoDarkUrl = url
+        }
       }
 
       if (faviconFile) {
         const url = await uploadFile(faviconFile, 'favicon')
-        if (url) newFaviconUrl = url
+        if (url) {
+          console.log('📝 Guardando favicon URL:', url)
+          newFaviconUrl = url
+        }
       }
+
+      console.log('💾 Guardando en base de datos:', {
+        logo_url: newLogoUrl,
+        logo_dark_url: newLogoDarkUrl,
+        favicon_url: newFaviconUrl
+      })
 
       // Save to database
       const { error } = await supabase
