@@ -2,6 +2,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import type { Metadata } from "next"
 import { LanguageProvider } from "@/contexts/LanguageContext"
+import DynamicFavicon from "@/components/DynamicFavicon"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -61,6 +62,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
+        <DynamicFavicon />
         <LanguageProvider>
           {children}
         </LanguageProvider>

@@ -2,13 +2,40 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { UserPlus, LogIn } from 'lucide-react'
 import LanguageSelector from '@/components/LanguageSelector'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useState, useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
 
 export default function Header() {
   const { t } = useLanguage()
+  const [logoUrl, setLogoUrl] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchLogo() {
+      try {
+        const { data, error } = await supabase
+          .from('cms_brand')
+          .select('logo_url')
+          .limit(1)
+          .single()
+
+        if (!error && data?.logo_url) {
+          setLogoUrl(data.logo_url)
+        }
+      } catch (error) {
+        console.error('Error fetching logo:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchLogo()
+  }, [])
 
   return (
     <motion.header
@@ -19,12 +46,26 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo - Espacio reservado */}
+          {/* Logo dinámico */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-accent-blue rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-              <span className="text-white font-bold text-xl sm:text-2xl">T</span>
-            </div>
-            <span className="hidden sm:block text-white font-bold text-xl">Tokiia</span>
+            {!loading && logoUrl ? (
+              <Image
+                src={logoUrl}
+                alt="Tokiia"
+                width={120}
+                height={40}
+                className="h-8 sm:h-10 w-auto group-hover:scale-105 transition-transform"
+                priority
+                unoptimized
+              />
+            ) : (
+              <>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-accent-blue rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <span className="text-white font-bold text-xl sm:text-2xl">T</span>
+                </div>
+                <span className="hidden sm:block text-white font-bold text-xl">Tokiia</span>
+              </>
+            )}
           </Link>
 
           {/* Center buttons - Hidden on mobile, visible on tablet+ */}
