@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Menu, X, LogIn, UserPlus, Globe, Sparkles } from 'lucide-react'
+import { Menu, X, LogIn, UserPlus, Globe, Sparkles, Bitcoin, Coins } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
@@ -133,18 +133,26 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile: Solo botón Acceder */}
-            <Link
-              href="https://app.tokiia.com/auth/login"
-              className="md:hidden"
-            >
-              <Button
-                size="sm"
-                className="bg-primary hover:bg-primary-dark text-white px-4"
-              >
-                <LogIn className="h-4 w-4" />
-              </Button>
-            </Link>
+            {/* Mobile: Botones circulares tipo app */}
+            <div className="md:hidden flex items-center gap-2">
+              <Link href="https://app.tokiia.com/auth/register">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  className="w-11 h-11 rounded-full bg-gradient-to-br from-accent-green to-accent-green/80 flex items-center justify-center shadow-lg shadow-accent-green/40 hover:shadow-xl hover:shadow-accent-green/50 transition-all group"
+                >
+                  <Sparkles className="h-5 w-5 text-white group-hover:rotate-12 transition-transform" />
+                </motion.button>
+              </Link>
+
+              <Link href="https://app.tokiia.com/auth/login">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  className="w-11 h-11 rounded-full bg-gradient-to-br from-primary via-primary to-accent-blue flex items-center justify-center shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/60 transition-all group"
+                >
+                  <Bitcoin className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
+                </motion.button>
+              </Link>
+            </div>
           </div>
         </div>
       </motion.header>
