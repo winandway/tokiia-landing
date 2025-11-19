@@ -146,5 +146,17 @@
       "button": "Create free account",
       "note": "No credit card required • Start in 2 minutes"
     }
+  },
+  "header": {
+    "createAccount": "Create Account",
+    "login": "Login",
+    "createShort": "Sign Up",
+    "loginShort": "Log In",
+    "language": "Language",
+    "actions": "Actions",
+    "startFree": "Start free",
+    "toMyAccount": "To my account",
+    "spanish": "🇪🇸 Español",
+    "english": "🇺🇸 English"
   }
 }

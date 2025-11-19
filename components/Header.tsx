@@ -118,7 +118,7 @@ export default function Header() {
                   className="border-accent-green/60 text-accent-green hover:bg-accent-green hover:text-white hover:border-accent-green transition-all shadow-sm hover:shadow-lg hover:shadow-accent-green/30 group"
                 >
                   <Sparkles className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-                  Crear cuenta
+                  {t.header.createAccount}
                 </Button>
               </Link>
 
@@ -128,7 +128,7 @@ export default function Header() {
                   className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white shadow-lg shadow-primary/40 hover:shadow-primary/60 transition-all"
                 >
                   <LogIn className="mr-2 h-4 w-4" />
-                  Acceder
+                  {t.header.login}
                 </Button>
               </Link>
             </div>
@@ -141,7 +141,7 @@ export default function Header() {
                   className="px-3 py-2 rounded-full bg-gradient-to-br from-accent-green to-accent-green/80 flex items-center gap-1.5 shadow-lg shadow-accent-green/40 hover:shadow-xl hover:shadow-accent-green/50 transition-all group"
                 >
                   <Sparkles className="h-4 w-4 text-white group-hover:rotate-12 transition-transform" />
-                  <span className="text-white text-xs font-semibold">Crear</span>
+                  <span className="text-white text-xs font-semibold">{t.header.createShort}</span>
                 </motion.button>
               </Link>
 
@@ -151,7 +151,7 @@ export default function Header() {
                   className="px-3 py-2 rounded-full bg-gradient-to-br from-primary via-primary to-accent-blue flex items-center gap-1.5 shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/60 transition-all group"
                 >
                   <Bitcoin className="h-4 w-4 text-white group-hover:scale-110 transition-transform" />
-                  <span className="text-white text-xs font-semibold">Entrar</span>
+                  <span className="text-white text-xs font-semibold">{t.header.loginShort}</span>
                 </motion.button>
               </Link>
             </div>
@@ -185,7 +185,7 @@ export default function Header() {
                 <div className="space-y-2">
                   <p className="text-xs uppercase tracking-wide text-text-secondary font-semibold flex items-center gap-2">
                     <Globe className="h-3 w-3" />
-                    Idioma
+                    {t.header.language}
                   </p>
                   <div className="flex gap-2">
                     <button
@@ -199,7 +199,7 @@ export default function Header() {
                           : 'bg-bg-secondary text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
-                      🇪🇸 Español
+                      {t.header.spanish}
                     </button>
                     <button
                       onClick={() => {
@@ -212,7 +212,7 @@ export default function Header() {
                           : 'bg-bg-secondary text-text-secondary hover:text-white hover:bg-white/5'
                       }`}
                     >
-                      🇺🇸 English
+                      {t.header.english}
                     </button>
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export default function Header() {
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-wide text-text-secondary font-semibold flex items-center gap-2">
                     <Sparkles className="h-3 w-3" />
-                    Acciones
+                    {t.header.actions}
                   </p>
 
                   <Link
@@ -239,8 +239,8 @@ export default function Header() {
                         <Sparkles className="h-5 w-5" />
                       </div>
                       <div className="text-left">
-                        <div className="font-semibold">Crear cuenta</div>
-                        <div className="text-xs opacity-70">Comienza gratis</div>
+                        <div className="font-semibold">{t.header.createAccount}</div>
+                        <div className="text-xs opacity-70">{t.header.startFree}</div>
                       </div>
                     </Button>
                   </Link>
@@ -254,8 +254,8 @@ export default function Header() {
                         <LogIn className="h-5 w-5" />
                       </div>
                       <div className="text-left">
-                        <div className="font-semibold">Acceder</div>
-                        <div className="text-xs opacity-80">A mi cuenta</div>
+                        <div className="font-semibold">{t.header.login}</div>
+                        <div className="text-xs opacity-80">{t.header.toMyAccount}</div>
                       </div>
                     </Button>
                   </Link>

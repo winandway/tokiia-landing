@@ -21,10 +21,27 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('es')
 
   useEffect(() => {
-    // Load saved language from localStorage
+    // Check if user has a saved language preference
     const savedLang = localStorage.getItem('language') as Language
+
     if (savedLang && (savedLang === 'es' || savedLang === 'en')) {
+      // Use saved preference
       setLanguageState(savedLang)
+    } else {
+      // Auto-detect language from browser
+      const browserLang = navigator.language || navigator.languages?.[0]
+
+      // Check if browser language starts with 'es' (es, es-ES, es-MX, etc.)
+      if (browserLang?.toLowerCase().startsWith('es')) {
+        setLanguageState('es')
+        localStorage.setItem('language', 'es')
+      } else {
+        // Default to English for all other languages
+        setLanguageState('en')
+        localStorage.setItem('language', 'en')
+      }
+
+      console.log('🌍 Idioma detectado automáticamente:', browserLang, '→', browserLang?.toLowerCase().startsWith('es') ? 'Español' : 'English')
     }
   }, [])
 

@@ -146,5 +146,17 @@
       "button": "Crear cuenta gratis",
       "note": "Sin tarjeta de crédito requerida • Comienza en 2 minutos"
     }
+  },
+  "header": {
+    "createAccount": "Crear cuenta",
+    "login": "Acceder",
+    "createShort": "Crear",
+    "loginShort": "Entrar",
+    "language": "Idioma",
+    "actions": "Acciones",
+    "startFree": "Comienza gratis",
+    "toMyAccount": "A mi cuenta",
+    "spanish": "🇪🇸 Español",
+    "english": "🇺🇸 English"
   }
 }
