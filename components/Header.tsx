@@ -133,23 +133,25 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile: Botones circulares tipo app */}
+            {/* Mobile: Botones tipo app con texto (VERSIÓN 2) */}
             <div className="md:hidden flex items-center gap-2">
               <Link href="https://app.tokiia.com/auth/register">
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 rounded-full bg-gradient-to-br from-accent-green to-accent-green/80 flex items-center justify-center shadow-lg shadow-accent-green/40 hover:shadow-xl hover:shadow-accent-green/50 transition-all group"
+                  className="px-3 py-2 rounded-full bg-gradient-to-br from-accent-green to-accent-green/80 flex items-center gap-1.5 shadow-lg shadow-accent-green/40 hover:shadow-xl hover:shadow-accent-green/50 transition-all group"
                 >
-                  <Sparkles className="h-5 w-5 text-white group-hover:rotate-12 transition-transform" />
+                  <Sparkles className="h-4 w-4 text-white group-hover:rotate-12 transition-transform" />
+                  <span className="text-white text-xs font-semibold">Crear</span>
                 </motion.button>
               </Link>
 
               <Link href="https://app.tokiia.com/auth/login">
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 rounded-full bg-gradient-to-br from-primary via-primary to-accent-blue flex items-center justify-center shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/60 transition-all group"
+                  className="px-3 py-2 rounded-full bg-gradient-to-br from-primary via-primary to-accent-blue flex items-center gap-1.5 shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/60 transition-all group"
                 >
-                  <Bitcoin className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
+                  <Bitcoin className="h-4 w-4 text-white group-hover:scale-110 transition-transform" />
+                  <span className="text-white text-xs font-semibold">Entrar</span>
                 </motion.button>
               </Link>
             </div>
