@@ -116,7 +116,7 @@ export default function GetStarted() {
                 <p className="text-text-secondary mb-6">
                   {t.getStarted.cta.description}
                 </p>
-                <Link href="https://app.tokiia.com/auth/login" target="_blank" rel="noopener noreferrer">
+                <Link href="https://app.tokiia.com/auth/login">
                   <Button
                     size="lg"
                     className="bg-primary hover:bg-primary-dark text-white px-8 py-6 text-lg shadow-lg shadow-primary/50 hover:shadow-primary/70 transition-all duration-300"

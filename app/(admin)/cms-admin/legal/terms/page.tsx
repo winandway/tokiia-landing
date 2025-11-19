@@ -125,7 +125,7 @@ export default function TermsEditor() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link href="/terms" target="_blank">
+          <Link href="/terms">
             <Button variant="outline" className="border-accent-blue text-accent-blue">
               <Eye className="mr-2 h-4 w-4" />
               Vista Previa

@@ -175,7 +175,7 @@ export default function CMSDashboard() {
               Configurar SEO
             </Button>
           </Link>
-          <Link href="/" target="_blank">
+          <Link href="/">
             <Button variant="ghost" className="text-white hover:bg-bg-secondary">
               Ver Sitio Público
             </Button>

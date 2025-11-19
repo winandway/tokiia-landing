@@ -111,7 +111,7 @@ export default function Header() {
                 <span className="font-medium">{language === 'es' ? 'ES' : 'EN'}</span>
               </button>
 
-              <Link href="https://app.tokiia.com/auth/register" target="_blank" rel="noopener noreferrer">
+              <Link href="https://app.tokiia.com/auth/register">
                 <Button
                   variant="outline"
                   size="sm"
@@ -122,7 +122,7 @@ export default function Header() {
                 </Button>
               </Link>
 
-              <Link href="https://app.tokiia.com/auth/login" target="_blank" rel="noopener noreferrer">
+              <Link href="https://app.tokiia.com/auth/login">
                 <Button
                   size="sm"
                   className="bg-primary hover:bg-primary-dark text-white shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all"
@@ -136,8 +136,6 @@ export default function Header() {
             {/* Mobile: Solo botón Acceder */}
             <Link
               href="https://app.tokiia.com/auth/login"
-              target="_blank"
-              rel="noopener noreferrer"
               className="md:hidden"
             >
               <Button
@@ -215,8 +213,6 @@ export default function Header() {
 
                   <Link
                     href="https://app.tokiia.com/auth/register"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <Button
@@ -230,8 +226,6 @@ export default function Header() {
 
                   <Link
                     href="https://app.tokiia.com/auth/login"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <Button className="w-full justify-start bg-primary hover:bg-primary-dark text-white">

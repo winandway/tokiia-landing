@@ -145,7 +145,7 @@ export default function PrivacyEditor() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link href="/privacy" target="_blank">
+          <Link href="/privacy">
             <Button variant="outline" className="border-accent-blue text-accent-blue">
               <Eye className="mr-2 h-4 w-4" />
               Vista Previa

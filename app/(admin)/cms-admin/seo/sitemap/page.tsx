@@ -94,8 +94,6 @@ export default function SitemapManager() {
 
           <a
             href="https://search.google.com/search-console"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <Button variant="outline" className="border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white">
               Abrir Google Search Console

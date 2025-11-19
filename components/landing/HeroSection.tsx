@@ -60,7 +60,7 @@ export default function HeroSection({ data }: { data?: HeroData }) {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
           >
-            <Link href={heroData.cta_url} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <Link href={heroData.cta_url} className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg shadow-lg shadow-primary/50 hover:shadow-primary/70 transition-all duration-300"

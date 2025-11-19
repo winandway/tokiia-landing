@@ -165,7 +165,7 @@ export default function FooterEditor() {
             Personaliza los enlaces y contenido del pie de página
           </p>
         </div>
-        <a href="/" target="_blank" rel="noopener noreferrer">
+        <a href="/">
           <Button variant="outline" className="border-accent-blue text-accent-blue">
             <Eye className="mr-2 h-4 w-4" />
             Vista Previa

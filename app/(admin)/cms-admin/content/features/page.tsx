@@ -116,7 +116,7 @@ export default function FeaturesEditor() {
             Edita las características que se muestran en la landing
           </p>
         </div>
-        <a href="/#features" target="_blank" rel="noopener noreferrer">
+        <a href="/#features">
           <Button variant="outline" className="border-accent-blue text-accent-blue">
             <Eye className="mr-2 h-4 w-4" />
             Vista Previa

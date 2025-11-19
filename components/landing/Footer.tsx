@@ -75,8 +75,6 @@ export default function Footer({ data }: { data?: FooterData }) {
               {footerData.social.twitter && (
                 <a
                   href={footerData.social.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-bg-secondary border border-tokiia-border flex items-center justify-center text-text-secondary hover:text-primary hover:border-primary transition-all duration-300"
                 >
                   <Twitter size={18} />
@@ -85,8 +83,6 @@ export default function Footer({ data }: { data?: FooterData }) {
               {footerData.social.telegram && (
                 <a
                   href={footerData.social.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-bg-secondary border border-tokiia-border flex items-center justify-center text-text-secondary hover:text-accent-blue hover:border-accent-blue transition-all duration-300"
                 >
                   <Send size={18} />
@@ -95,8 +91,6 @@ export default function Footer({ data }: { data?: FooterData }) {
               {footerData.social.discord && (
                 <a
                   href={footerData.social.discord}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-bg-secondary border border-tokiia-border flex items-center justify-center text-text-secondary hover:text-accent-green hover:border-accent-green transition-all duration-300"
                 >
                   <MessageCircle size={18} />

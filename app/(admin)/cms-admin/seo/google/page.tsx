@@ -108,8 +108,6 @@ export default function GoogleConsoleSettings() {
               Obtén tu ID en{' '}
               <a
                 href="https://analytics.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="text-accent-blue hover:underline"
               >
                 Google Analytics
@@ -157,8 +155,6 @@ export default function GoogleConsoleSettings() {
               Añade esta URL en{' '}
               <a
                 href="https://search.google.com/search-console"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="text-accent-blue hover:underline"
               >
                 Google Search Console
