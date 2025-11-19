@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tokiia - Billetera Web3 P2P Descentralizada",
     description: "Tu billetera cripto más avanzada con P2P integrado. Gestiona tus criptomonedas de forma segura y descentralizada.",
+    url: "/",
     type: "website",
     locale: "es_ES",
     alternateLocale: ["en_US"],
@@ -26,15 +27,10 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/wallet-preview.jpeg",
-        width: 400,
-        height: 800,
-        alt: "Tokiia Wallet - Billetera Web3",
-      },
-      {
-        url: "/og-image.jpg", // Opcional: imagen horizontal optimizada 1200x630
-        width: 1200,
-        height: 630,
-        alt: "Tokiia - Billetera Web3 P2P Descentralizada",
+        width: 800,
+        height: 1600,
+        alt: "Tokiia Wallet - Billetera Web3 P2P Descentralizada",
+        type: "image/jpeg",
       }
     ],
   },
