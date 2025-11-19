@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     siteName: "Tokiia",
     images: [
       {
-        url: "/wallet-preview.jpeg",
-        width: 800,
-        height: 1600,
+        url: "/red-social.png",
+        width: 1280,
+        height: 630,
         alt: "Tokiia Wallet - Billetera Web3 P2P Descentralizada",
-        type: "image/jpeg",
+        type: "image/png",
       }
     ],
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tokiia - Billetera Web3 P2P Descentralizada",
     description: "Tu billetera cripto más avanzada con P2P integrado. Gestiona tus criptomonedas de forma segura.",
-    images: ["/wallet-preview.jpeg"],
+    images: ["/red-social.png"],
     creator: "@tokiia", // Actualiza con tu @ de Twitter
     site: "@tokiia",
   },
