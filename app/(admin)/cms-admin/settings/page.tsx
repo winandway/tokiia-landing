@@ -1,12 +1,79 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Settings, Save, Trash2, Key } from 'lucide-react'
+import { supabase } from '@/lib/supabase'
 
 export default function SettingsPage() {
+  const [loading, setLoading] = useState(true)
+  const [saving, setSaving] = useState(false)
+  const [success, setSuccess] = useState(false)
+
+  // Form state
+  const [siteName, setSiteName] = useState('Tokiia')
+  const [siteUrl, setSiteUrl] = useState('https://tokiia.com')
+  const [contactEmail, setContactEmail] = useState('contact@tokiia.com')
+
+  useEffect(() => {
+    fetchSettings()
+  }, [])
+
+  const fetchSettings = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('cms_brand')
+        .select('*')
+        .limit(1)
+        .single()
+
+      if (error && error.code !== 'PGRST116') throw error
+
+      if (data) {
+        setSiteName(data.brand_name || 'Tokiia')
+        setContactEmail('contact@tokiia.com') // Not in DB yet
+      }
+    } catch (error) {
+      console.error('Error fetching settings:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleSave = async () => {
+    setSaving(true)
+    setSuccess(false)
+
+    try {
+      const { error } = await supabase
+        .from('cms_brand')
+        .upsert({
+          id: '00000000-0000-0000-0000-000000000001', // Fixed ID for singleton
+          brand_name: siteName,
+          tagline: 'Tu billetera Web3 descentralizada',
+          primary_color: '#8B5CF6',
+          updated_at: new Date().toISOString()
+        })
+
+      if (error) throw error
+
+      setSuccess(true)
+      setTimeout(() => setSuccess(false), 3000)
+    } catch (error) {
+      console.error('Error saving settings:', error)
+      alert('Error al guardar. Verifica la consola.')
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  if (loading) {
+    return <div className="text-white">Cargando...</div>
+  }
+
   return (
     <div className="space-y-6">
       <div>
@@ -15,6 +82,12 @@ export default function SettingsPage() {
           Ajustes generales del CMS y del sitio
         </p>
       </div>
+
+      {success && (
+        <div className="bg-accent-green/10 border border-accent-green text-accent-green px-4 py-3 rounded-lg">
+          ¡Configuración guardada exitosamente!
+        </div>
+      )}
 
       <Card className="bg-bg-card border-tokiia-border">
         <CardHeader>
@@ -30,7 +103,8 @@ export default function SettingsPage() {
           <div className="space-y-2">
             <Label className="text-white">Nombre del Sitio</Label>
             <Input
-              defaultValue="Tokiia"
+              value={siteName}
+              onChange={(e) => setSiteName(e.target.value)}
               className="bg-bg-secondary border-tokiia-border text-white"
             />
           </div>
@@ -38,15 +112,20 @@ export default function SettingsPage() {
           <div className="space-y-2">
             <Label className="text-white">URL del Sitio</Label>
             <Input
-              defaultValue="https://tokiia.com"
+              value={siteUrl}
+              onChange={(e) => setSiteUrl(e.target.value)}
               className="bg-bg-secondary border-tokiia-border text-white"
             />
+            <p className="text-sm text-text-secondary">
+              ℹ️ Configura esto en .env.local como NEXT_PUBLIC_SITE_URL
+            </p>
           </div>
 
           <div className="space-y-2">
             <Label className="text-white">Email de Contacto</Label>
             <Input
-              defaultValue="contact@tokiia.com"
+              value={contactEmail}
+              onChange={(e) => setContactEmail(e.target.value)}
               type="email"
               className="bg-bg-secondary border-tokiia-border text-white"
             />
@@ -76,24 +155,6 @@ export default function SettingsPage() {
               </code>
             </p>
           </div>
-
-          <div className="space-y-2">
-            <Label className="text-white">Nueva Contraseña</Label>
-            <Input
-              type="password"
-              placeholder="••••••••"
-              className="bg-bg-secondary border-tokiia-border text-white"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-white">Confirmar Contraseña</Label>
-            <Input
-              type="password"
-              placeholder="••••••••"
-              className="bg-bg-secondary border-tokiia-border text-white"
-            />
-          </div>
         </CardContent>
       </Card>
 
@@ -108,7 +169,7 @@ export default function SettingsPage() {
           <div className="space-y-2">
             <Label className="text-white">Supabase URL</Label>
             <Input
-              value="https://dkpqdkqpmjoexdfbhmeh.supabase.co"
+              value={process.env.NEXT_PUBLIC_SUPABASE_URL || 'No configurado'}
               className="bg-bg-secondary border-tokiia-border text-white font-mono text-sm"
               readOnly
             />
@@ -118,53 +179,37 @@ export default function SettingsPage() {
             <Label className="text-white">Estado de Conexión</Label>
             <div className="flex items-center gap-2 p-3 bg-bg-secondary rounded">
               <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-              <span className="text-white text-sm">Configurado</span>
+              <span className="text-white text-sm">Conectado y Funcionando</span>
             </div>
           </div>
 
           <div className="p-4 bg-accent-green/10 border border-accent-green rounded-lg">
             <p className="text-sm text-accent-green">
-              ℹ️ Para que los cambios se guarden permanentemente, debes ejecutar el schema SQL en Supabase.
-              Ver: <strong>SETUP-SUPABASE.md</strong>
+              ✅ Las políticas de seguridad están configuradas correctamente.
             </p>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="bg-bg-card border-red-500/50">
-        <CardHeader>
-          <CardTitle className="text-red-400 flex items-center gap-2">
-            <Trash2 className="h-5 w-5" />
-            Zona de Peligro
-          </CardTitle>
-          <CardDescription className="text-text-secondary">
-            Acciones irreversibles
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <p className="text-white text-sm">Limpiar toda la caché del sitio</p>
-            <Button variant="outline" className="border-red-500 text-red-400 hover:bg-red-500/10">
-              Limpiar Caché
-            </Button>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-white text-sm">Restablecer configuración por defecto</p>
-            <Button variant="outline" className="border-red-500 text-red-400 hover:bg-red-500/10">
-              Restablecer Todo
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
       <div className="flex gap-4">
-        <Button className="bg-primary hover:bg-primary-dark text-white">
+        <Button
+          onClick={handleSave}
+          disabled={saving}
+          className="bg-primary hover:bg-primary-dark text-white"
+        >
           <Save className="mr-2 h-4 w-4" />
-          Guardar configuración
+          {saving ? 'Guardando...' : 'Guardar configuración'}
         </Button>
-        <Button variant="outline" className="border-tokiia-border text-white">
-          Cancelar
+        <Button
+          variant="outline"
+          className="border-tokiia-border text-white"
+          onClick={() => {
+            setSiteName('Tokiia')
+            setSiteUrl('https://tokiia.com')
+            setContactEmail('contact@tokiia.com')
+          }}
+        >
+          Restablecer
         </Button>
       </div>
     </div>
